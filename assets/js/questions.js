@@ -1,56 +1,78 @@
+// Define the questions and the choices and the answers, put it in a variable in questions.js file
+
 const quizQuestions = [
   {
-    question:
-      "String values must be enclosed within _____ when being assigned to variables.",
-    choices: ["commas", "curly brackets", "quotes", "parenthesis"],
-    answer: "quotes",
+    "question-title": "Inside which HTML element do we put the JavaScript?",
+    choices: ["<js>", "<javascript>", "<scripting>", "<script>"],
+    answer: "<script>",
   },
+
   {
-    question: "Commonly used data types DO NOT include:",
-    choices: ["strings", "booleans", "alerts", "numbers"],
-    answer: "alerts",
-  },
-  {
-    question: "How do you create a function in JavaScript",
+    "question-title": "Where is the correct place to insert a JavaScript?",
     choices: [
-      "function = myFunction()",
+      "The <body> section",
+      "Both the <head> section and the <body> section are correct",
+      "The <head> section",
+      "Don't need to insert",
+    ],
+    answer: "Both the <head> section and the <body> section are correct",
+  },
+
+  {
+    "question-title":
+      "What is the correct syntax for referring to an external script called 'xxx.js'?",
+    choices: [
+      '<script href="xxx.js">',
+      '<script href="xxx.jc">',
+      '<script name="xxx.js">',
+      '<script src="xxx.js">',
+    ],
+    answer: '<script src="xxx.js">',
+  },
+
+  {
+    "question-title": "How do you write 'Hello World' in an alert box?",
+    choices: [
+      "alertBox('Hello World')",
+      "alert('Hello World')",
+      "msg('Hello World')",
+      "msgBox('Hello World')",
+    ],
+    answer: "alert('Hello World')",
+  },
+
+  {
+    "question-title": "How do you create a function in JavaScript?",
+    choices: [
       "function myFunction()",
+      "function = myFunction()",
       "function:myFunction()",
-      "createMyFunction()",
+      "function - myFunction",
     ],
     answer: "function myFunction()",
   },
+
   {
-    question: "How do you call a function named myFunction?",
+    "question-title": "How do you call a function named 'myFunction'?",
     choices: [
       "call myFunction()",
-      "call function myFunction()",
       "myFunction()",
-      "call myFunction",
+      "call function myFunction()",
+      "myFunction() call",
     ],
     answer: "myFunction()",
   },
+
   {
-    question:
-      "To see if two variables are equal in an if / else statement you would use ____.",
-    choices: ["=", "==", "equals", "!="],
-    answer: "==",
+    "question-title": "How to write an IF statement in JavaScript?",
+    choices: ["if i = 5", "if i == 5", "if (i === 5)", "if i = 5 then"],
+    answer: "if (i === 5)",
   },
+
   {
-    question: "The first index of an array is ____.",
-    choices: ["0", "1", "8", "any"],
-    answer: "0",
-  },
-  {
-    question: "How to write an IF statement in JavaScript?",
-    choices: ["if i == 5 then", "if i = 5 then", "if(i == 5)", "if i = 5"],
-    answer: "if(i == 5)",
-  },
-  {
-    question: "Which event occurs when the user clicks on an HTML element?",
-    choices: ["onclick", "onchange", "onmouseover", "onmouseclick"],
-    answer: "onclick",
+    "question-title":
+      "How to write an IF statement for executing some code if 'i' is NOT equal to 5?",
+    choices: ["if i <> 5", "if (i <> 5)", "if i =! 5 then", "if (i != 5)"],
+    answer: "if (i != 5)",
   },
 ];
-
-console.log(quizQuestions);
