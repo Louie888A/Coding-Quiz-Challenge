@@ -7,7 +7,7 @@ const questionsScreen = document.querySelector("#questions");
 let currentQuestionIndex = 0;
 let questionNumber = 0;
 let choiceButtonEl;
-const feedbackAlert = document.querySelector("#feedback");
+const fb = document.querySelector("#feedback");
 const questionTitleEl = document.getElementById("question-title");
 let timeLeft;
 let timeInterval;
@@ -17,8 +17,9 @@ const finalScore = document.querySelector("#final-score");
 const correctAudio = new Audio("./assets/sfx/correct.wav");
 const incorrectAudio = new Audio("./assets/sfx/incorrect.wav");
 
+// Start of start Quiz button to do
 startBtn.addEventListener("click", function (event) {
-// Use hide/ unhide the screen
+  // Use hide/ unhide the screen
   startScreen.classList.add("hide");
   questionsScreen.classList.remove("hide");
   createOptionButton();
@@ -26,19 +27,7 @@ startBtn.addEventListener("click", function (event) {
   displayQuestions();
 });
 
-function startQuiz() {
-  timeLeft = 59;
-    timeInterval = setInterval(function () {
-    if (timeLeft > 1) {
-      time.textContent = timeLeft;
-      timeLeft--;
-    } else {
-      time.textContent = "time up";
-      endQuiz();
-    }
-  }, 1000);
-}
-
+// Function to change the div view
 function createOptionButton() {
   let choicesDiv = document.getElementById("choices");
   for (let i = 0; i < 4; i++) {
@@ -51,7 +40,21 @@ function createOptionButton() {
   for (let i = 0; i < choiceButtonEl.length; i++) {
     choiceButtonEl[i].addEventListener("click", buttonsEventList);
   }
-  feedbackAlert.classList.remove("hide");
+  fb.classList.remove("hide");
+}
+
+// Function to do when user clicks start button and start time calculation
+function startQuiz() {
+  timeLeft = 59;
+  timeInterval = setInterval(function () {
+    if (timeLeft > 1) {
+      time.textContent = timeLeft;
+      timeLeft--;
+    } else {
+      time.textContent = "time up";
+      endQuiz();
+    }
+  }, 1000);
 }
 
 // Function to display the current question and choices on the screen
@@ -66,22 +69,23 @@ function displayQuestions() {
   }
 }
 
+// Function to do after user clicks on
 function buttonsEventList(event) {
   let selectedChoice = event.target.textContent;
   let currentQuestion = quizQuestions[questionNumber];
   if (selectedChoice === currentQuestion.answer) {
-    feedbackAlert.textContent = "Your answer is correct!";
+    fb.textContent = "Your answer is correct!";
     correctAudio.play();
     setTimeout(function () {
-      feedbackAlert.textContent = "";
+      fb.textContent = "";
       moveToNextQuestion();
     }, 1000);
   } else {
-    timeLeft -= 5;
-    feedbackAlert.textContent = "Your answer is wrong!";
+    timeLeft -= 3;
+    fb.textContent = "Your answer is wrong!";
     incorrectAudio.play();
     setTimeout(function () {
-      feedbackAlert.textContent = "";
+      fb.textContent = "";
       moveToNextQuestion();
     }, 1000);
   }
@@ -102,16 +106,15 @@ function endQuiz() {
   clearInterval(timeInterval);
   questionsScreen.classList.add("hide");
   endScreen.classList.remove("hide");
-  feedbackAlert.classList.add("hide");
+  fb.classList.add("hide");
 }
 
-// Create function to display user total score based on total timeLeft
+// Create function to display user total score and store into localStorage
 function displayScore() {
   if (endQuiz) {
     finalScore.textContent = timeLeft;
   }
 }
-
 let submitBtn = document.querySelector("#submit");
 let highscoresArray = [];
 submitBtn.addEventListener("click", function (event) {
@@ -119,13 +122,13 @@ submitBtn.addEventListener("click", function (event) {
   let initials = document.querySelector("#initials").value;
   finalScore.textContent = timeLeft;
   highscores = { initials: initials, score: timeLeft };
-  let highScoresLocStor = JSON.parse(localStorage.getItem("highscores"));
-  if (highScoresLocStor === null) {
+  let highScoreSt = JSON.parse(localStorage.getItem("highscores"));
+  if (highScoreSt === null) {
     highscoresArray.push(highscores);
     localStorage.setItem("highscores", JSON.stringify(highscoresArray));
   } else {
-    highScoresLocStor.push(highscores);
-    localStorage.setItem("highscores", JSON.stringify(highScoresLocStor));
+    highScoreSt.push(highscores);
+    localStorage.setItem("highscores", JSON.stringify(highScoreSt));
   }
   location.href = "highscores.html";
 });
