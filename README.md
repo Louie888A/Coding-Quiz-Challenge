@@ -20,7 +20,7 @@ https://github.com/Louie888A/Coding-Quiz-Challenge
 
 ## Screenshots of the application
 ![Alt Quiz page](<assets/screenshot/quiz page.png>)
-![Alt Start](<assets/screenshot/quiz start.png>)
+![Alt Start](<assets/screenshot/Quiz start.png>)
 ![Alt Correct](<assets/screenshot/correct answer.png>)
 ![Alt Wrong](<assets/screenshot/wrong answer.png>)
 ![Alt Finish](<assets/screenshot/finished screen.png>)
